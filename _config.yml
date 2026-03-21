@@ -30,7 +30,7 @@ author:
 # template repo to help other authors. If you don't want it,
 # just change 'true' to 'false' below.
 show_template_credit: true
-template_repo_url: "https://github.com/yourusername/author-site-template"
+template_repo_url: "https://github.com/jc-trent/author-website-template"
 
 # =========================================================
 # SYSTEM CONFIG (Don't touch unless you know what you're doing)
