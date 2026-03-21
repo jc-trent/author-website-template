@@ -4,8 +4,6 @@ title: About
 description: "About the Author"
 ---
 
-# About the Author
-
 [Your author bio goes here. Tell your readers about what you write, why you write it, and what they can expect from your books.]
 
 [Second paragraph of your bio. Maybe mention your hobbies, where you live, or what you do when you aren't writing books.]

@@ -168,7 +168,7 @@ When you're ready:
 4. Go back to your series file and update the cover line:
 
 ```yaml
-cover: "/assets/img/my-cover.jpg"    # filename must match exactly
+cover: "/assets/img/my-cover.png"    # filename must match exactly,
 ```
 
 Make sure there's no `#` in front of the line — that would comment it out and hide it.

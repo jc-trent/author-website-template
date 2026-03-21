@@ -1,7 +1,7 @@
 ---
 layout: default
 title: null
-description: "Author of progression fantasy and LitRPG"
+{{ page.description | default: site.description }}
 ---
 
 {% assign series = site.series | where: "slug", site.featured_series | first %}
