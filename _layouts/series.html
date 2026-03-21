@@ -1,0 +1,130 @@
+---
+layout: default
+---
+
+<div class="page-header">
+  <h1>{{ page.title }}</h1>
+  <p class="subtitle">{{ page.genre }}{% if page.status %} &middot; {{ page.status }}{% endif %}</p>
+</div>
+
+<div class="series-splash">
+
+  {% if page.vibe or page.comp_titles %}
+  <div class="series-overview">
+    {% if page.vibe %}
+    <p class="series-vibe">{{ page.vibe }}</p>
+    {% endif %}
+    {% if page.comp_titles %}
+    <p class="series-comps"><strong>For fans of:</strong> {{ page.comp_titles }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if page.description %}
+  <div class="series-description">
+    {{ page.description | markdownify }}
+  </div>
+  {% endif %}
+
+  <div class="series-details">
+    {% if page.planned_length %}
+    <div class="series-detail">
+      <span class="detail-label">Length</span>
+      <span class="detail-value">{{ page.planned_length }}</span>
+    </div>
+    {% endif %}
+    {% if page.release_cadence %}
+    <div class="series-detail">
+      <span class="detail-label">Release Cadence</span>
+      <span class="detail-value">{{ page.release_cadence }}</span>
+    </div>
+    {% endif %}
+    {% if page.status %}
+    <div class="series-detail">
+      <span class="detail-label">Status</span>
+      <span class="detail-value">{{ page.status }}</span>
+    </div>
+    {% endif %}
+    {% if page.audio_delay %}
+    <div class="series-detail">
+      <span class="detail-label">Audio Delay</span>
+      <span class="detail-value">{{ page.audio_delay }}</span>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if page.books %}
+  <hr>
+
+  {% for book in page.books %}
+  <div class="book-card">
+    {% if book.cover %}
+    <img src="{{ book.cover | relative_url }}" alt="{{ book.title }} cover" class="book-card-cover">
+    {% else %}
+    <div
+      style="width:100%; aspect-ratio:2/3; background:var(--bg-card); border:1px solid var(--border); border-radius:3px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-family:var(--font-nav); font-size:0.8rem; letter-spacing:0.05em;">
+      COVER COMING SOON
+    </div>
+    {% endif %}
+    <div>
+      <div class="book-card-series">Book {{ book.number }}{% if book.status == "Coming Soon" %} &middot; Coming Soon{% endif %}</div>
+      <h2 class="book-card-title">{{ book.title }}</h2>
+      {% if book.words or book.format %}
+      <div class="book-card-meta">
+        {% if book.format %}{{ book.format }}{% endif %}
+        {% if book.format and book.words %} &middot; {% endif %}
+        {% if book.words %}{{ book.words }} words{% endif %}
+      </div>
+      {% endif %}
+      {% if book.release_date %}
+      <div class="book-card-release">
+        <span class="release-label">Ebook</span>
+        <span class="release-date">{{ book.release_date }}</span>
+        {% if book.release_status %}
+        <span class="release-status release-status--{{ book.release_status | slugify }}">{{ book.release_status }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if book.audio_date %}
+      <div class="book-card-release">
+        <span class="release-label">Audio</span>
+        <span class="release-date">{{ book.audio_date }}</span>
+        {% if book.audio_status %}
+        <span class="release-status release-status--{{ book.audio_status | slugify }}">{{ book.audio_status }}</span>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% if book.blurb %}
+      <div class="book-card-blurb">{{ book.blurb | markdownify }}</div>
+      {% endif %}
+      {% if book.bad_summary %}
+      <div class="bad-summary">
+        <span class="bad-summary-label">Vibes</span>
+        {{ book.bad_summary }}
+      </div>
+      {% endif %}
+      {% if book.amazon or book.goodreads or book.audible or book.other_link %}
+      <div class="book-card-links">
+        {% if book.amazon %}<a href="{{ book.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Amazon</a>{% endif %}
+        {% if book.audible %}<a href="{{ book.audible }}" class="btn btn-ghost" target="_blank" rel="noopener">Audible</a>{% endif %}
+        {% if book.goodreads %}<a href="{{ book.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>{% endif %}
+        {% if book.other_link %}<a href="{{ book.other_link_url }}" class="btn btn-ghost" target="_blank" rel="noopener">{{ book.other_link }}</a>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% if content != "" and content != nil %}
+  <hr>
+  <div class="about-content">
+    {{ content }}
+  </div>
+  {% endif %}
+
+</div>
+
+<div style="margin-top: 4rem;">
+  <a href="{{ '/books/' | relative_url }}" class="btn btn-ghost">&larr; All Series</a>
+</div>

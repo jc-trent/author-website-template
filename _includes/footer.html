@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    &copy; {{ 'now' | date: "%Y" }} {{ site.author.name }} &middot;
+    <a href="{{ '/books/' | relative_url }}">Books</a> &middot;
+    {% if site.author.newsletter_url != "" %}
+      <a href="{{ site.author.newsletter_url }}" target="_blank" rel="noopener">Newsletter</a> &middot;
+    {% endif %}
+    <a href="mailto:{{ site.author.email }}">Contact</a>
+  </div>
+</footer>

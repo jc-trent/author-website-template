@@ -1,0 +1,36 @@
+---
+layout: default
+title: Books
+description: "Browse all book series."
+---
+
+<div class="page-header">
+  <h1>Books</h1>
+</div>
+
+<div class="series-grid">
+  {% assign sorted_series = site.series | sort: "order" %}
+  {% for s in sorted_series %}
+  <a href="{{ s.url | relative_url }}" class="series-card">
+    <div class="series-card-inner">
+      {% if s.books.first.cover %}
+      <img src="{{ s.books.first.cover | relative_url }}" alt="{{ s.title }}" class="series-card-cover">
+      {% else %}
+      <div class="series-card-cover-placeholder">
+        {{ s.books.size }} book{% if s.books.size != 1 %}s{% endif %}
+      </div>
+      {% endif %}
+      <div class="series-card-body">
+        <div class="series-card-genre">{{ s.genre }}</div>
+        <h2 class="series-card-title">{{ s.title }}</h2>
+        <div class="series-card-meta">
+          {{ s.planned_length }}{% if s.status %} &middot; {{ s.status }}{% endif %}
+        </div>
+        {% if s.vibe %}
+        <p class="series-card-vibe">{{ s.vibe | truncate: 140 }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>

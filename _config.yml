@@ -1,0 +1,58 @@
+title: "John Author"
+description: "Author of progression fantasy and LitRPG"
+url: "https://yourusername.github.io" # Change this if you buy a custom domain
+baseurl: ""
+
+# =========================================================
+# HOMEPAGE SETTINGS
+# =========================================================
+# Change these two values to swap which book is featured in the
+# giant hero section on the homepage.
+# 'featured_series' must exactly match the 'slug' in your series file.
+featured_series: "example-series"
+featured_book: 1
+
+# =========================================================
+# AUTHOR SETTINGS (The Levers)
+# =========================================================
+# Update these links to match your brand. The site will automatically
+# update your header, footer, and buttons to use this data.
+author:
+  name: "John Author"
+  email: "author@yourdomain.com"
+  newsletter_url: "https://yournewsletter.substack.com"
+  amazon_url: "https://www.amazon.com/author/yourid"
+
+# =========================================================
+# TEMPLATE CREDIT
+# =========================================================
+# This adds a small link in the navigation back to the open-source
+# template repo to help other authors. If you don't want it,
+# just change 'true' to 'false' below.
+show_template_credit: true
+template_repo_url: "https://github.com/yourusername/author-site-template"
+
+# =========================================================
+# SYSTEM CONFIG (Don't touch unless you know what you're doing)
+# =========================================================
+markdown: kramdown
+permalink: pretty
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+
+collections:
+  posts:
+    output: true
+  series:
+    output: true
+    permalink: /books/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "series"
+    values:
+      layout: series

@@ -1,0 +1,59 @@
+---
+layout: default
+title: null
+description: "Author of progression fantasy and LitRPG"
+---
+
+{% assign series = site.series | where: "slug", site.featured_series | first %}
+{% if series %}
+  {% for book in series.books %}
+    {% if book.number == site.featured_book %}
+      {% assign featured = book %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<section class="hero">
+  {% if featured.cover %}
+  <img src="{{ featured.cover | relative_url }}" alt="{{ featured.title }} cover" class="hero-cover">
+  {% else %}
+  <div style="width:100%; aspect-ratio:2/3; background:var(--bg-card); border:1px solid var(--border); border-radius:3px; display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-family:var(--font-nav); font-size:0.8rem; letter-spacing:0.05em;">
+    COVER COMING SOON
+  </div>
+  {% endif %}
+  <div class="hero-content">
+    <div class="hero-series">{{ series.title }} &middot; Book {{ featured.number }}</div>
+    <h1 class="hero-title">{{ featured.title }}</h1>
+    <div class="hero-author">by {{ site.author.name }}</div>
+
+    {% if featured.tagline %}
+    <p class="hero-blurb">
+      <strong>{{ featured.tagline }}</strong>
+    </p>
+    {% endif %}
+
+    {% if featured.blurb %}
+    <div class="hero-blurb">{{ featured.blurb | markdownify }}</div>
+    {% endif %}
+
+    <div class="hero-actions">
+      {% if featured.amazon %}<a href="{{ featured.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Read on Amazon</a>{% endif %}
+      {% if featured.goodreads %}<a href="{{ featured.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>{% endif %}
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section class="cta-section">
+  <h2>Stay in the Loop</h2>
+  <p>
+    Progress updates, release dates, and early looks at upcoming projects. No spam. Unsubscribe anytime.
+  </p>
+  <div class="hero-actions" style="justify-content:center;">
+    {% if site.author.newsletter_url != "" %}
+      <a href="{{ site.author.newsletter_url }}" class="btn btn-primary" target="_blank" rel="noopener">Join the Mailing List</a>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+layout: default
+title: Updates
+description: "News, progress logs, and technical write-ups."
+---
+
+<div class="page-header">
+  <h1>Updates & Logs</h1>
+</div>
+
+<div class="updates-list">
+  {% for post in site.posts %}
+  <div style="margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem;">
+    <div style="font-family: var(--font-nav); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+      {{ post.date | date: "%B %d, %Y" }}
+    </div>
+    <h2 style="margin: 0 0 0.5rem 0;"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p style="color: var(--text-muted);">{{ post.description }}</p>
+  </div>
+  {% endfor %}
+</div>
