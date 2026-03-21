@@ -8,6 +8,8 @@ Your readers want to know three things: *When is the next book? How many books a
 
 **What you don't need:** Any coding knowledge, any software to download, or any money. GitHub Pages hosts your site for free, forever.
 
+**Want to see what it looks like in action?** This template was built for [jc-trent.com](https://www.jc-trent.com). The live site is customized and less modular than this template, but it'll give you a feel for what you're building toward. Browse around. Buy some books while you're there.
+
 ---
 
 ## Before You Start: How This Works
@@ -235,4 +237,3 @@ I wanted a single page where a reader could see: how many books are planned, whe
 I built this for my own site, and I'm sharing it because the whole community would benefit if more authors did this. The template is free, the hosting is free, and the time investment is about an hour. If it helps even a few authors communicate better with their readers, it was worth open-sourcing.
 
 Use it, modify it, make it yours. No attribution required (though there's an optional template credit link in the nav if you want to leave it on and help other authors find it).
-
