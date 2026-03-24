@@ -1,7 +1,7 @@
 ---
 layout: default
 title: null
-{{ page.description | default: site.description }}
+description: "Author of progression fantasy and LitRPG"
 ---
 
 {% assign series = site.series | where: "slug", site.featured_series | first %}
@@ -38,8 +38,18 @@ title: null
     {% endif %}
 
     <div class="hero-actions">
-      {% if featured.amazon %}<a href="{{ featured.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Read on Amazon</a>{% endif %}
-      {% if featured.goodreads %}<a href="{{ featured.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>{% endif %}
+      {% if featured.amazon %}
+        <a href="{{ featured.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Read on Amazon</a>
+      {% endif %}
+      {% if featured.goodreads %}
+        <a href="{{ featured.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>
+      {% endif %}
+      {% unless featured.amazon or featured.goodreads %}
+        {% if site.author.newsletter_url and site.author.newsletter_url != "" %}
+          <a href="{{ site.author.newsletter_url }}" class="btn btn-primary" target="_blank" rel="noopener">Get Notified at Launch</a>
+        {% endif %}
+        <a href="{{ '/books/' | append: site.featured_series | append: '/' | relative_url }}" class="btn btn-ghost">See the Series</a>
+      {% endunless %}
     </div>
   </div>
 </section>
@@ -52,7 +62,7 @@ title: null
     Progress updates, release dates, and early looks at upcoming projects. No spam. Unsubscribe anytime.
   </p>
   <div class="hero-actions" style="justify-content:center;">
-    {% if site.author.newsletter_url != "" %}
+    {% if site.author.newsletter_url and site.author.newsletter_url != "" %}
       <a href="{{ site.author.newsletter_url }}" class="btn btn-primary" target="_blank" rel="noopener">Join the Mailing List</a>
     {% endif %}
   </div>

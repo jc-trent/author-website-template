@@ -11,6 +11,21 @@
   <meta name="robots" content="noindex, nofollow">
   {% endif %}
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  {% if page.og_image %}
+  <meta property="og:image" content="{{ page.og_image | absolute_url }}">
+  {% else %}
+  <meta property="og:image" content="{{ '/assets/img/cover.jpg' | absolute_url }}">
+  {% endif %}
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,13 +41,6 @@
 </head>
 
 <body>
-  <!-- WARNING BANNER -->
-  <!-- <div
-    style="background-color: var(--accent); color: white; text-align: center; padding: 0.5rem 1rem; font-size: 0.85rem; font-family: monospace; letter-spacing: 0.5px; z-index: 1000; position: relative;">
-    <strong>WARNING:</strong> This site is a live construction zone. Links may lead to the void and assets are
-    placeholders.
-  </div> -->
-
   {% include nav.html %}
 
   <main class="page-content {% if page.wide %}page-wide{% endif %}">
