@@ -1,0 +1,40 @@
+---
+layout: default
+noindex: true
+---
+
+{% assign sample_series = site.series | where: "slug", page.series | first %}
+{% assign sample_book = nil %}
+{% if sample_series %}
+  {% for b in sample_series.books %}
+    {% if b.number == page.book %}
+      {% assign sample_book = b %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="sample-header">
+  <div class="sample-context">
+    {% if sample_series %}{{ sample_series.title }}{% endif %}{% if sample_book %} &middot; {{ sample_book.title }}{% endif %}
+  </div>
+  <h1>{{ page.title }}</h1>
+</div>
+
+<article class="sample-content">
+  {{ content }}
+</article>
+
+<div class="sample-cta">
+  <p class="sample-cta-text">That's all for now.</p>
+  {% if sample_book.amazon %}
+  <a href="{{ sample_book.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Continue on Amazon</a>
+  {% elsif site.author.newsletter_url and site.author.newsletter_url != "" %}
+  <a href="{{ site.author.newsletter_url }}" class="btn btn-primary" target="_blank" rel="noopener">Get Notified at Launch</a>
+  {% endif %}
+  {% if sample_series %}
+  <a href="{{ sample_series.url | relative_url }}" class="btn btn-ghost">&larr; Back to Series</a>
+  {% else %}
+  <a href="{{ '/books/' | relative_url }}" class="btn btn-ghost">&larr; All Books</a>
+  {% endif %}
+</div>

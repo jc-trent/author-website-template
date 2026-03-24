@@ -57,6 +57,7 @@ layout: default
   <hr>
 
   {% for book in page.books %}
+  {% assign sample = site.samples | where: "series", page.slug | where: "book", book.number | first %}
   <div class="book-card">
     {% if book.cover %}
     <img src="{{ book.cover | relative_url }}" alt="{{ book.title }} cover" class="book-card-cover">
@@ -100,14 +101,15 @@ layout: default
       {% if book.bad_summary %}
       <div class="bad-summary">
         <span class="bad-summary-label">Vibes</span>
-        {{ book.bad_summary }}
+        {{ book.bad_summary | newline_to_br }}
       </div>
       {% endif %}
-      {% if book.amazon or book.goodreads or book.audible or book.other_link %}
+      {% if book.amazon or book.goodreads or book.audible or sample or book.other_link %}
       <div class="book-card-links">
         {% if book.amazon %}<a href="{{ book.amazon }}" class="btn btn-primary" target="_blank" rel="noopener">Amazon</a>{% endif %}
         {% if book.audible %}<a href="{{ book.audible }}" class="btn btn-ghost" target="_blank" rel="noopener">Audible</a>{% endif %}
         {% if book.goodreads %}<a href="{{ book.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>{% endif %}
+        {% if sample %}<a href="{{ sample.url | relative_url }}" class="btn btn-ghost">Read Chapter One</a>{% endif %}
         {% if book.other_link %}<a href="{{ book.other_link_url }}" class="btn btn-ghost" target="_blank" rel="noopener">{{ book.other_link }}</a>{% endif %}
       </div>
       {% endif %}

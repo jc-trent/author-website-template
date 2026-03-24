@@ -8,7 +8,7 @@ Your readers want to know three things: *When is the next book? How many books a
 
 **What you don't need:** Any coding knowledge, any software to download, or any money. GitHub Pages hosts your site for free, forever.
 
-**Want to see what it looks like in action?** This template was built for [jc-trent.com](https://www.jc-trent.com). The live site is customized and less modular than this template, but it'll give you a feel for what you're building toward. Browse around. Buy some books while you're there.
+**Want to see what it looks like in action?** This template was built for [jc-trent.com](https://www.jc-trent.com). The live site is customized and has additional features not included in this template (promo swaps, reader quote carousels, a build pipeline writeup), but it'll give you a feel for what you're building toward. Browse around. Buy some books while you're there.
 
 ---
 
@@ -121,8 +121,8 @@ The `featured_series` value must exactly match the `slug` in your series file (e
 Open this file. At the very top (the first 10 lines), you'll see the color settings:
 
 ```css
---accent: #b8862d;
---accent-glow: #d4993a;
+--accent: #3b8a7a;
+--accent-glow: #4db8a4;
 ```
 
 These are hex color codes. If you want your buttons and accent colors to match your book covers, swap in your own hex codes. (Search "hex color picker" on Google to find one — you click a color and it gives you the code.)
@@ -168,7 +168,7 @@ When you're ready:
 4. Go back to your series file and update the cover line:
 
 ```yaml
-cover: "/assets/img/my-cover.png"    # filename must match exactly,
+cover: "/assets/img/my-cover.jpg"    # filename must match exactly
 ```
 
 Make sure there's no `#` in front of the line — that would comment it out and hide it.
@@ -202,7 +202,36 @@ The post will automatically appear on your Updates page.
 
 ---
 
-## Step 7: Custom Domain (Optional)
+## Step 7: Sample Chapters (Optional)
+
+Want to let readers preview a chapter before they buy? Drop a file in the `_samples` folder and the site handles the rest.
+
+1. Go to the `_samples` folder. Inside, you'll see a folder named after the example series (e.g., `example-series`). **Rename this folder to match your series slug** — the same value you used in your series file.
+2. Open the example file inside (`ch1.md`), or create a new one. The name doesn't matter.
+3. The front matter needs just three fields:
+
+```yaml
+---
+title: "Chapter One"
+series: my-series-name
+book: 1
+---
+```
+
+`series` must match your series file's `slug`. `book` must match the book number in your series file.
+
+4. Write your chapter below the second `---`. Plain Markdown — scene breaks are just `---`, dialogue and emphasis work normally.
+5. Click **Commit changes**.
+
+A **"Read Chapter One"** button will automatically appear on the book's card on the series page and on the homepage if that book is featured. The button links to a clean reading page with your chapter, and a call to action at the bottom that says "Continue on Amazon" (if the book has an Amazon link) or "Get Notified at Launch" (if it doesn't).
+
+**To remove a sample**, just delete the file. The button disappears on its own — no other files need to change.
+
+**To add samples for other books**, create another file in the same folder with a different `book` number. Each book can have one sample. If you have a second series, create a new subfolder in `_samples` matching that series slug and add files there.
+
+---
+
+## Step 8: Custom Domain (Optional)
 
 Your site works fine at `yourusername.github.io`. But if you want a professional URL like `www.yourpenname.com`, you can set one up for about $10–15 per year.
 

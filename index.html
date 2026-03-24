@@ -13,6 +13,7 @@ description: "Author of progression fantasy and LitRPG"
     {% endif %}
   {% endfor %}
 {% endif %}
+{% assign featured_sample = site.samples | where: "series", site.featured_series | where: "book", site.featured_book | first %}
 
 <section class="hero">
   {% if featured.cover %}
@@ -44,7 +45,10 @@ description: "Author of progression fantasy and LitRPG"
       {% if featured.goodreads %}
         <a href="{{ featured.goodreads }}" class="btn btn-ghost" target="_blank" rel="noopener">Goodreads</a>
       {% endif %}
-      {% unless featured.amazon or featured.goodreads %}
+      {% if featured_sample %}
+        <a href="{{ featured_sample.url | relative_url }}" class="btn btn-ghost">Read Chapter One</a>
+      {% endif %}
+      {% unless featured.amazon or featured.goodreads or featured_sample %}
         {% if site.author.newsletter_url and site.author.newsletter_url != "" %}
           <a href="{{ site.author.newsletter_url }}" class="btn btn-primary" target="_blank" rel="noopener">Get Notified at Launch</a>
         {% endif %}

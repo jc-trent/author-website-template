@@ -26,6 +26,7 @@ books:
     # audible: "https://audible.com/..."
     bad_summary: "A funny, one-sentence bad summary of the book."
     status: "Available"
+    sample: /samples/s1/b1c1
     blurb: |
       Your book 1 blurb goes here. Make it punchy.
 

@@ -52,6 +52,9 @@ collections:
   series:
     output: true
     permalink: /books/:slug/
+  samples:
+    output: true
+    permalink: /samples/:path/
 
 defaults:
   - scope:
@@ -59,3 +62,8 @@ defaults:
       type: "series"
     values:
       layout: series
+  - scope:
+      path: ""
+      type: "samples"
+    values:
+      layout: sample
