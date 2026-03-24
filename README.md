@@ -33,9 +33,13 @@ The only rule that matters: **indentation is sacred.** These files use spaces (n
 
 **`.md` files** (Markdown) are content files. This is where you write your actual words. Markdown is just plain text with a few simple tricks: `**bold**` makes text **bold**, `*italic*` makes text *italic*, and `#` at the start of a line makes a heading. If you can write an email, you can write Markdown.
 
+[Official Docs on Markdown](https://www.markdownguide.org/basic-syntax/)
+
+It looks weird at first, but it's my favorite tool for writing, to the point that I write all my books in markdown with Obsidian. It has a shallow learning curve, but has a ton of benefits once you get the hang of it.
+
 At the top of every `.md` file, you'll see a block of text between two lines of three dashes (`---`). This block is called **front matter** and it's where you put structured data about that page — things like the book title, the release date, and the blurb. Below the front matter is where freeform text goes.
 
-One more concept: the `#` symbol. In these files, putting a `#` at the start of a line turns that line into a **comment** — the site ignores it completely. This is how you turn features on and off. If you don't have an audiobook yet, you don't delete the audiobook line — you just put a `#` in front of it. When you're ready, remove the `#` and it appears on your site.
+One more concept: the `#` symbol. In the `.yml` files and in the `.md` files frontmatter, putting a `#` at the start of a line turns that line into a **comment** — the site ignores it completely. This is how you turn features on and off. If you don't have an audiobook yet, you don't delete the audiobook line — you just put a `#` in front of it. When you're ready, remove the `#` and it appears on your site.
 
 ```yaml
 # This line is ignored by the site (it's "commented out")
@@ -82,6 +86,8 @@ Every change you make to your site follows the same three steps:
 
 That's the only mechanical skill required. Everything else in this guide is "open this file, change this text."
 
+If you're not confident in what you're changing. Don't worry. Change one file at a time, wait a few minutes, check the changes. That way you'll know which file broke something if it didn't work.
+
 ---
 
 ## Step 4: Make It Yours
@@ -103,7 +109,7 @@ author:
 
 Change these values to your own. The site uses them everywhere — your name in the header, your email in the footer, your newsletter link on buttons. Update them once here, and they update everywhere.
 
-**If you don't have something yet** (no Amazon page, no newsletter), just leave the value as an empty string: `newsletter_url: ""`. The site will automatically hide any buttons that would link to nowhere.
+**If you don't have something yet** (no Amazon page, no newsletter), just leave the value as an empty string: `newsletter_url: ""`. The site will automatically hide any buttons that would link to nowhere. Try it out, change the default `newsletter_url` value to `""`, and you'll see the buttons disappear in a few minutes. Change it to `www.google.com` and it'll come back and linking it will take you to google.
 
 This file also controls which book appears on your homepage:
 
@@ -235,7 +241,9 @@ A **"Read Chapter One"** button will automatically appear on the book's card on 
 
 Your site works fine at `yourusername.github.io`. But if you want a professional URL like `www.yourpenname.com`, you can set one up for about $10–15 per year.
 
-1. Buy a domain from a registrar like Namecheap, Porkbun, or Cloudflare.
+I won't get into email hosting, but you can also use that domain for a professional custom email. There's dozens of providers and hundreds of guides online. That way someone can email you at `author@yourpenname.com`.
+
+1. Buy a domain from a registrar like Namecheap, Cloudflare, or any other registrar if you have a preference.
 2. In your registrar's DNS settings, add A records pointing to GitHub's IP addresses. Search "GitHub Pages custom domain setup" for the current IPs — they update occasionally.
 3. In your repository, go to **Settings > Pages**. Under "Custom domain," type your new URL and click Save.
 4. GitHub will create a file called `CNAME` in your repository. Don't delete it — it's what connects your domain to your site.
